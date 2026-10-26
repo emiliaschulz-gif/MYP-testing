@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Webpage Template</title>
+  <style>
+    /* CSS Custom Variables for Theme Toggle */
+    :root {
+      --bg-color: #f8fafc;
+      --card-bg: #ffffff;
+      --text-color: #0f172a;
+      --text-muted: #64748b;
+      --primary: #4f46e5;
+      --primary-hover: #4338ca;
+      --border-color: #e2e8f0;
+    }
+
+    [data-theme="dark"] {
+      --bg-color: #0f172a;
+      --card-bg: #1e293b;
+      --text-color: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-color: #334155;
+    }
+
+    /* Base Reset */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    /* Navigation Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: var(--card-bg);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    .theme-btn {
+      background: none;
+      border: 1px solid var(--border-color);
+      color: var(--text-color);
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.875rem;
+      transition: background 0.2s;
+    }
+
+    .theme-btn:hover {
+      background-color: var(--border-color);
+    }
+
+    /* Main Container */
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 4rem 1rem;
+    }
+
+    .hero h1 {
+      font-size: 2.75rem;
+      margin-bottom: 1rem;
+      letter-spacing: -0.025em;
+    }
+
+    .hero p {
+      font-size: 1.125rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: var(--primary);
+      color: #ffffff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.2s;
+    }
+
+    .btn:hover {
+      background-color: var(--primary-hover);
+    }
+
+    /* Features Grid */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      padding: 1.75rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    .card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      margin-top: 4rem;
+      border-top: 1px solid var(--border-color);
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">MyBrand</div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#features">Features</a>
+      <a href="#contact">Contact</a>
+      <button class="theme-btn" id="themeToggle">Toggle Theme</button>
+    </nav>
+  </header>
+
+  <!-- Content -->
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <h1>Welcome to Your New Website</h1>
+      <p>A clean, responsive HTML5 boilerplate with flexible CSS layout and interactive theme switching capabilities.</p>
+      <a href="#features" class="btn">Get Started</a>
+    </section>
+
+    <!-- Feature Cards -->
+    <section class="features" id="features">
+      <div class="card">
+        <h3>📱 Responsive Layout</h3>
+        <p>Adapts automatically across mobile phones, tablets, and desktop displays.</p>
+      </div>
+      <div class="card">
+        <h3>⚡ Lightweight</h3>
+        <p>Built using standard HTML5 and CSS variables without heavy dependencies.</p>
+      </div>
+      <div class="card">
+        <h3>🌙 Dark Mode Support</h3>
+        <p>Toggle between light and dark visual themes instantly with JavaScript.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 MyBrand. All rights reserved.</p>
+  </footer>
+
+  <!-- Theme Toggle Script -->
+  <script>
+    const themeBtn = document.getElementById('themeToggle');
+    
+    themeBtn.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const targetTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', targetTheme);
+    });
+  </script>
+
+</body>
+</html>
